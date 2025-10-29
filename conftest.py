@@ -7,7 +7,6 @@ from main import BooksCollector
 @pytest.fixture
 def collector():
     return BooksCollector()
-
     
 # фикстура для создания экземпляра со списком книг 
 @pytest.fixture
