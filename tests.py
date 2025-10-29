@@ -1,45 +1,8 @@
 import pytest
+
 from main import BooksCollector
 
 class TestBooksCollector:
-
-    # фикстура для создания экземпляра класса BooksCollector()
-    @pytest.fixture
-    def collector(self):
-        return BooksCollector()
-    
-    # фикстура для создания экземпляра со списком книг 
-    @pytest.fixture
-    def collector_with_books(self):
-        collector = BooksCollector()
-        collector.add_new_book('Гордость и предубеждение и зомби')
-        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
-        collector.add_new_book('Трое в лодке')
-        collector.add_new_book('Божественная комедия')
-        collector.add_new_book('Властелин колец')
-        
-        collector.set_book_genre('Гордость и предубеждение и зомби', 'Ужасы')
-        collector.set_book_genre('Что делать, если ваш кот хочет вас убить', 'Детективы')
-        collector.set_book_genre('Трое в лодке', 'Комедии')
-        collector.set_book_genre('Божественная комедия', 'Комедии')
-        collector.set_book_genre('Властелин колец', 'Фантастика')
-        
-        return collector
-    
-
-    # пример теста из прекода:
-    #def test_add_new_book_add_two_books(self):
-        # создаем экземпляр (объект) класса BooksCollector
-        #collector = BooksCollector()
-
-        # добавляем две книги
-        #collector.add_new_book('Гордость и предубеждение и зомби')
-        #collector.add_new_book('Что делать, если ваш кот хочет вас убить')
-
-        # проверяем, что добавилось именно две
-        # словарь books_rating, который нам возвращает метод get_books_rating, имеет длину 2
-        #assert len(collector.get_books_genre()) == 2
-
 
     # проверяем добавление книги
     @pytest.mark.parametrize('book_name, expected', [
