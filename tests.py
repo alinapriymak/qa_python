@@ -31,23 +31,29 @@ class TestBooksCollector:
         assert len(books) == 1
 
 
-    # проверяем установку жанра
-    @pytest.mark.parametrize('genre, expected', [
-        ('Фантастика', 'Фантастика'),
-        ('Ужасы', 'Ужасы'),
-        ('Детективы', 'Детективы'),
-        ('Мультфильмы', 'Мультфильмы'),
-        ('Комедии', 'Комедии'),
-        ('Героический эпос', ''),
+    # проверяем установку валидного жанра
+    @pytest.mark.parametrize('genre', [
+    'Фантастика',
+    'Ужасы', 
+    'Детективы',
+    'Мультфильмы',
+    'Комедии',
     ])
-    def test_set_book_genre(self, collector, genre, expected):
+    def test_set_book_genre_valid_genre(self, collector, genre):
         collector.add_new_book('Тестовая книга')
         collector.set_book_genre('Тестовая книга', genre)
-        
-        if genre in collector.genre:
-            assert collector.get_book_genre('Тестовая книга') == expected
-        else:
-            assert collector.get_book_genre('Тестовая книга') == ''
+        assert collector.get_book_genre('Тестовая книга') == genre
+
+
+    # проверяем установку невалидного жанра
+    @pytest.mark.parametrize('genre', [
+    'Героический эпос',
+    '',
+    ])
+    def test_set_book_genre_invalid_genre(self, collector, genre):
+        collector.add_new_book('Тестовая книга')
+        collector.set_book_genre('Тестовая книга', genre)
+        assert collector.get_book_genre('Тестовая книга') == ''
 
 
     # проверяем вывод жанра по названию книги 
