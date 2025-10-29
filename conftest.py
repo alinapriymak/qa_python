@@ -5,7 +5,7 @@ from main import BooksCollector
 
 # фикстура для создания экземпляра класса BooksCollector()
 @pytest.fixture
-def collector(self):
+def collector():
     return BooksCollector()
 
     
